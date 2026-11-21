@@ -2,246 +2,254 @@
 
 **Personal finance, made easier.**
 
-PesaPlan is a desktop application for managing personal finances. This
-repository contains the application source and packaging resources.
+PesaPlan is a desktop application for managing personal finances. It helps you organise accounts, track income and expenses, manage budgets, import M-Pesa transactions, and monitor your financial position.
 
-[**Download PesaPlan for Windows --- GitHub
-Releases**](https://github.com/Kanyi254/PesaPlan/releases/latest)
+[**Download PesaPlan for Windows**](https://github.com/Kanyi254/PesaPlan/releases/latest/download/PesaPlan_Setup.exe) · [View all releases](https://github.com/Kanyi254/PesaPlan/releases)
 
-> Download the latest Windows installer from GitHub Releases. The direct
-> installer download becomes available after `PesaPlan_Setup.exe` is
-> uploaded as a release asset.
+## Features
 
-## Choose how to use PesaPlan
+- **Dashboard:** Review your financial position and visual summaries.
+- **Accounts:** Organise and track your financial accounts.
+- **Transactions:** Record and manage income and expenses.
+- **Budgets:** Set budgets and monitor spending.
+- **M-Pesa Import:** Import supported M-Pesa SMS transaction messages.
+- **Phone Integration:** Connect supported phone functionality.
+- **Excel Export:** Export financial information to Excel.
+- **Sync:** Use the application's synchronisation functionality.
 
-  ------------------------------------------------------------------------------------
-  User                                Instructions
-  ----------------------------------- ------------------------------------------------
-  Windows beginner                    [Windows
-                                      installation](#windows-installation-beginners)
+## Screenshots
 
-  Windows Command Prompt user         [Windows Command
-                                      Prompt](#windows-command-prompt)
+Explore the PesaPlan desktop interface.
 
-  Linux user                          [Linux installation](#linux-installation)
+### Dashboard
 
-  Developer                           [Run from source](#run-from-source)
-  ------------------------------------------------------------------------------------
+![PesaPlan Dashboard](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_03_16.png)
 
-## Windows installation (beginners)
+![PesaPlan Dashboard Details](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_03_30.png)
 
-**Requirements:** Windows 10 or later, 64-bit, and `PesaPlan_Setup.exe`
-from the [official Releases
-page](https://github.com/Kanyi254/PesaPlan/releases).
+### Accounts
 
-You do **not** need Python, Conda, pip, or developer tools.
+![PesaPlan Accounts](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_03_41.png)
 
-1.  Open the [PesaPlan Releases
-    page](https://github.com/Kanyi254/PesaPlan/releases).
-2.  Download `PesaPlan_Setup.exe` from the latest release.
-3.  Open Downloads and double-click the installer.
-4.  Follow the setup wizard. Select the desktop shortcut option if
-    desired.
-5.  Finish setup and launch PesaPlan from the Start Menu or desktop
-    shortcut.
+### Budgets
 
-Only use the installer from this repository's official Releases page.
-The installer is unsigned and may trigger a Windows SmartScreen warning.
-Verify its source before deciding whether to continue.
+![PesaPlan Budgets](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_04_41.png)
+
+### M-Pesa Import
+
+![PesaPlan M-Pesa Import](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_04_49.png)
+
+### Phone Integration
+
+![PesaPlan Phone Integration](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_05_15.png)
+
+### Excel Export
+
+![PesaPlan Excel Export](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_05_23.png)
+
+### Synchronisation
+
+![PesaPlan Synchronisation](screenshots/PesaPlan%20-%20Budget%20Tracker%2021_11_2026%2023_05_34.png)
+
+## Installation
+
+### Windows (Recommended for beginners)
+
+**Requirements:** Windows 10 or later, 64-bit.
+
+You do not need Python, Conda, pip, or developer tools.
+
+1. Download [PesaPlan_Setup.exe](https://github.com/Kanyi254/PesaPlan/releases/latest/download/PesaPlan_Setup.exe).
+2. Open your Downloads folder.
+3. Double-click `PesaPlan_Setup.exe`.
+4. Follow the installation wizard.
+5. Launch PesaPlan from the Start Menu or desktop shortcut.
+
+Only download the installer from the official PesaPlan GitHub Releases page.
+
+**Windows SmartScreen:** The installer is currently unsigned. Windows may display a security warning. Verify that you downloaded it from this official repository before deciding whether to continue.
 
 ### Windows data location
 
-The local SQLite database is stored at:
+PesaPlan stores its local SQLite database at:
 
-``` text
+```text
 %LOCALAPPDATA%\PesaPlan\pesaplan.db
 ```
 
-Press `Win + R`, enter `%LOCALAPPDATA%\PesaPlan`, and press Enter to
-open the folder.
+To open the folder:
 
-The database is separate from program files. The installer is configured
-not to remove it during an ordinary uninstall. Back it up before
-reinstalling, updating, or moving computers. Do not manually delete this
-folder unless you intend to remove your local records.
+1. Press `Win + R`.
+2. Enter `%LOCALAPPDATA%\PesaPlan`.
+3. Press Enter.
 
-## Windows Command Prompt
+Your database is separate from the application installation directory. Ordinary uninstall operations are configured not to remove it.
 
-### Launch the installed application
+Back up your database before reinstalling, updating, or moving computers.
 
-With the default installation location, run:
+### Linux
 
-``` bat
-"%LOCALAPPDATA%\Programs\PesaPlan\PesaPlan.exe"
-```
+A packaged Linux release is not yet published.
 
-Adjust the path if you chose a different installation folder.
+Linux users can currently run PesaPlan from source.
 
-### Run from source
+Requirements:
 
-For developers and advanced users. Requires Python 3.12 (64-bit).
+- Python 3
+- Python virtual environment support (`venv`)
 
-``` bat
-py -3.12 -m venv .venv
-.venv\Scripts\activate
-python -m pip install --upgrade pip
-python -m pip install PyQt5==5.15.11 openpyxl==3.1.5 "qrcode[pil]==8.2"
-python pesaplan.py
-```
-
-When finished, run `deactivate`.
-
-## Linux installation
-
-Linux users can run a packaged Linux build when published, or run from
-source.
-
-### Packaged Linux build
-
-1.  Download the Linux archive from [PesaPlan
-    Releases](https://github.com/Kanyi254/PesaPlan/releases).
-2.  Extract it and open a terminal in the extracted folder.
-3.  For the current folder-based PyInstaller layout, run:
-
-``` bash
-./dist/PesaPlan/PesaPlan
-```
-
-If permission is denied:
-
-``` bash
-chmod +x ./dist/PesaPlan/PesaPlan
-```
-
-Keep the `_internal` directory alongside the executable. Linux builds
-are separate from Windows installers.
-
-### Run from source
-
-Requires Python 3 and `venv`.
-
-``` bash
+```bash
 cd /path/to/PesaPlan
+
 python3 -m venv .venv
 source .venv/bin/activate
+
 python -m pip install --upgrade pip
+
 python -m pip install PyQt5==5.15.11 openpyxl==3.1.5 "qrcode[pil]==8.2"
+
 python pesaplan.py
 ```
 
 When finished:
 
-``` bash
+```bash
 deactivate
 ```
 
-If your distribution does not include `venv`, install its Python
-virtual-environment package using your package manager.
+A separate Linux package will be published when available.
 
-### Linux data location
+## Run from Source
 
-In the current source configuration, the SQLite database is stored
-beside the source application:
+The main application entry point is:
 
-``` text
-pesaplan.db
+```text
+pesaplan.py
 ```
 
-Keep this file safe to retain your records.
+### Supporting modules
 
-## Run from source
+| File | Purpose |
+|---|---|
+| `pesaplan.py` | Main desktop application |
+| `pesaplan_phone.py` | Phone integration |
+| `pesaplan_export.py` | Excel export |
+| `pesaplan_sync.py` | Synchronisation logic |
+| `pesaplan_syncui.py` | Synchronisation interface |
 
-The main entry point is `pesaplan.py`. Supporting modules:
+### Windows development setup
 
-  File                   Purpose
-  ---------------------- --------------------------
-  `pesaplan.py`          Main desktop application
-  `pesaplan_phone.py`    Phone integration
-  `pesaplan_export.py`   Excel export
-  `pesaplan_sync.py`     Synchronisation logic
-  `pesaplan_syncui.py`   Sync interface
+Requires Python 3.12 (64-bit).
 
-PesaPlan uses SQLite for its local database.
+```bat
+py -3.12 -m venv .venv
+
+.venv\Scripts\activate
+
+python -m pip install --upgrade pip
+
+python -m pip install PyQt5==5.15.11 openpyxl==3.1.5 "qrcode[pil]==8.2"
+
+python pesaplan.py
+```
+
+When finished:
+
+```bat
+deactivate
+```
 
 ### Developer notes
 
--   Use a virtual environment to isolate dependencies.
--   Do not commit or distribute a personal `pesaplan.db` file or its
-    SQLite `-wal` and `-shm` files.
--   Keep database backups private and secure.
--   Never include personal financial records in bug reports.
+- Use a virtual environment to isolate dependencies.
+- Do not commit or distribute personal `pesaplan.db` files.
+- Do not distribute SQLite `-wal` or `-shm` files.
+- Keep database backups private and secure.
+- Never include personal financial records in bug reports.
 
 ### Windows packaging
 
-The [Windows packaging
-kit](https://github.com/Kanyi254/PesaPlan/tree/main/PesaPlan_Windows_Packaging_Kit)
-contains the PyInstaller specification, Windows build script, and Inno
-Setup script. See its README for build instructions. The Windows build
-uses Python 3.12 (64-bit).
+The [Windows Packaging Kit](PesaPlan_Windows_Packaging_Kit/) contains the resources used to build the Windows application:
 
-## Backing up your data
+- PyInstaller specification.
+- Windows build script.
+- Inno Setup installer script.
+- Windows requirements file.
+- Packaging instructions.
 
-Before updating, reinstalling, moving to another computer, or
-troubleshooting:
+The Windows release is built using Python 3.12 (64-bit).
 
-1.  Close PesaPlan.
-2.  Locate the database file.
-3.  Copy it to a safe backup location.
-4.  Keep the backup private.
+## Data Backup and Safety
 
-Windows:
+Your financial records are stored locally in an SQLite database.
 
-``` text
+Before updating, reinstalling, troubleshooting, or moving to another computer:
+
+1. Close PesaPlan.
+2. Locate your database file.
+3. Copy it to a safe backup location.
+4. Keep the backup private.
+
+**Windows database:**
+
+```text
 %LOCALAPPDATA%\PesaPlan\pesaplan.db
 ```
 
-Linux source:
+**Linux source database:**
 
-``` text
+```text
 pesaplan.db
 ```
+
+Do not delete your database unless you intend to remove your local financial records.
 
 ## Troubleshooting
 
 ### PesaPlan does not open on Windows
 
--   Try launching it from the Start Menu.
--   Confirm the installer came from the official Releases page.
--   Restart Windows and try again.
--   Include your Windows version and exact error message when requesting
-    help.
+- Try launching it from the Start Menu.
+- Confirm the installer came from the official Releases page.
+- Restart Windows and try again.
+- Include your Windows version and exact error message when requesting help.
 
-### `python` or `py` is not recognised
+### Python or py is not recognised
 
-Python is required only when running from source. Install Python 3.12
-and the Python Launcher. The beginner-friendly installer does not
-require Python.
+Python is required only when running from source. Install Python 3.12 and the Python Launcher.
 
-### Linux reports `Permission denied`
-
-Run `chmod +x ./dist/PesaPlan/PesaPlan`, then try again.
+The Windows installer does not require a separate Python installation.
 
 ### A Python module is missing
 
-For source-code use, activate your virtual environment and install the
-dependencies listed above.
+Activate your virtual environment and install the dependencies listed in the source installation instructions.
 
 ### Report a problem
 
-Include your operating system/version, how you installed PesaPlan, what
-you were doing, and the complete error message. Never include passwords,
-access tokens, or private financial information.
+When reporting a problem, include:
+
+- Your operating system and version.
+- How you installed PesaPlan.
+- What you were doing when the problem occurred.
+- The complete error message.
+
+Never include passwords, access tokens, or private financial information.
 
 ## Releases
 
-Official builds are published at [PesaPlan
-Releases](https://github.com/Kanyi254/PesaPlan/releases).
+Official application builds are published on GitHub:
 
--   **Windows:** attach `PesaPlan_Setup.exe` to the Windows release.
--   **Linux:** publish a separate Linux-specific package when available.
+[**PesaPlan Releases**](https://github.com/Kanyi254/PesaPlan/releases)
 
-Read the release notes before updating.
+Current release:
 
-------------------------------------------------------------------------
+- **Version:** 1.0.0
+- **Platform:** Windows 10 or later (64-bit)
+- **Installer:** `PesaPlan_Setup.exe`
 
-**PesaPlan --- Personal finance, made easier.**
+[Download PesaPlan 1.0.0 for Windows](https://github.com/Kanyi254/PesaPlan/releases/latest/download/PesaPlan_Setup.exe)
+
+Linux packaging is planned as a separate release.
+
+---
+
+**PesaPlan — Personal finance, made easier.**
